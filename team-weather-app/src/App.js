@@ -20,12 +20,12 @@ componentWillMount(){
 }
 
 componentDidMount(){
-  axios('')
+  axios{`http://api.openweathermap.org/data/2.5/weather?q=${this.state.inputZipValue},us&units=imperial&appid=0fc87027b19a680898624a73494f93bc`},{
   .then(res => {
     this.setState(prevState => {
-      return {
+      this.setState({
         apiData: res.data.apiData,
-      }
+      })
     });
   });
 
@@ -41,17 +41,13 @@ handleWeatherSubmit(event){
   event.preventDefault();
   event.target.content = '';
 
-  axios.post('https:',{
-    cityname:
-    currentTemp:
-    description:
-    minTemp:
-    maxTemp:
+  axios(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.inputZipValue},us&units=imperial&appid=0fc87027b19a680898624a73494f93bc`,{
+  .then((res) => {
+    this.setState({
+    apiData: res.data.apiData,
+  })
   })
 }
-
-
-
 
 
   render() {
