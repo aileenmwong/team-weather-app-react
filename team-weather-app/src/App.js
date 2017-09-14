@@ -23,9 +23,9 @@ componentDidMount(){
   axios{`http://api.openweathermap.org/data/2.5/weather?q=${this.state.inputZipValue},us&units=imperial&appid=0fc87027b19a680898624a73494f93bc`},{
   .then(res => {
     this.setState(prevState => {
-      this.setState({
+      return{
         apiData: res.data.apiData,
-      })
+      }
     });
   });
 
@@ -52,8 +52,17 @@ handleWeatherSubmit(event){
 
   render() {
     return (
+      <div>
       <WeatherForm
-        data={}
+      handleWeatherSubmit={this.handleWeatherSubmit}
+      handleInputZipChange={this.handleInputZipChange}
+      handleInputZipValue={this.handleInputZipValue}
+      />
+      <Weather
+
+      data={this.state.weather}
+
+      </div>
     );
   }
 }
