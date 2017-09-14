@@ -12,6 +12,7 @@ class App extends Component {
       inputZipValue: '',
     }
     this.handleInputZipChange = this.handleInputZipChange.bind(this);
+    this.handleWeatherSubmitChange = this.handleWeatherSubmitChange.bind(this);
 
   }
 componentWillMount(){
@@ -30,11 +31,11 @@ componentDidMount(){
 
 }
 
-handleInputZipChange(event) {
+ handleInputZipChange(event) {
   this.setState({
-    inputZipValue: event.target.value
-  });
-}
+     inputZipValue: event.target.value
+   });
+ }
 
 handleWeatherSubmit(event){
   event.preventDefault();
