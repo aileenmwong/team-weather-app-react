@@ -1,19 +1,62 @@
 import React, { Component } from 'react';
+import WeatherForm from './components/WeatherForm';
+import axios from 'axios';
 import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      apiData: [],
+      inputZipValue: '',
+    }
+    this.handleInputZipChange = this.handleInputZipChange.bind(this);
+
+  }
+componentWillMount(){
+
+}
+
+componentDidMount(){
+  axios('')
+  .then(res => {
+    this.setState(prevState => {
+      return {
+        apiData: res.data.apiData,
+      }
+    });
+  });
+
+}
+
+handleInputZipChange(event) {
+  this.setState({
+    inputZipValue: event.target.value
+  });
+}
+
+handleWeatherSubmit(event){
+  event.preventDefault();
+  event.target.content = '';
+
+  axios.post('https:',{
+    cityname:
+    currentTemp:
+    description:
+    minTemp:
+    maxTemp:
+  })
+}
+
+
+
+
+
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <WeatherForm
+        data={}
     );
   }
 }
