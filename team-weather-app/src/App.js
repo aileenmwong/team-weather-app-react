@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import WeatherForm from './components/WeatherForm';
+import Weather from './components/Weather';
 import axios from 'axios';
 import logo from './logo.svg';
 import './App.css';
@@ -12,7 +13,7 @@ class App extends Component {
       inputZipValue: '',
     }
     this.handleInputZipChange = this.handleInputZipChange.bind(this);
-    this.handleWeatherSubmitChange = this.handleWeatherSubmitChange.bind(this);
+    this.handleWeatherSubmit = this.handleWeatherSubmit.bind(this);
 
   }
 componentWillMount(){
@@ -20,16 +21,14 @@ componentWillMount(){
 }
 
 componentDidMount(){
-  axios{`http://api.openweathermap.org/data/2.5/weather?q=${this.state.inputZipValue},us&units=imperial&appid=0fc87027b19a680898624a73494f93bc`},{
-  .then(res => {
-    this.setState(prevState => {
-      return{
-        apiData: res.data.apiData,
-      }
-    });
-  });
-
-}
+  axios(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.inputZipValue},us&units=imperial&appid=0fc87027b19a680898624a73494f93bc`)
+  .then((res) => {
+    console.log(res.data)
+      this.setState({
+        apiData: res.data.data,
+      })
+    })
+  }
 
  handleInputZipChange(event) {
   this.setState({
@@ -41,11 +40,12 @@ handleWeatherSubmit(event){
   event.preventDefault();
   event.target.content = '';
 
-  axios(`http://api.openweathermap.org/data/2.5/weather?q=${this.state.inputZipValue},us&units=imperial&appid=0fc87027b19a680898624a73494f93bc`,{
+  axios(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.inputZipValue},us&units=imperial&appid=0fc87027b19a680898624a73494f93bc`)
   .then((res) => {
     this.setState({
-    apiData: res.data.apiData,
+    apiData: res.data.data,
   })
+  console.log(res.data)
   })
 }
 
@@ -59,9 +59,8 @@ handleWeatherSubmit(event){
       handleInputZipValue={this.handleInputZipValue}
       />
       <Weather
-
-      data={this.state.weather}
-
+      data={this.state.apiData}
+      />
       </div>
     );
   }

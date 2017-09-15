@@ -7,7 +7,7 @@ class WeatherForm extends Component {
       <div>
         <form
           className="add-weather-form"
-          onSubmit={ }
+          onSubmit={this.props.handleWeatherSubmit}
         >
         <input
           type="text"
@@ -23,3 +23,5 @@ class WeatherForm extends Component {
       );
   }
 }
+
+export default WeatherForm;
