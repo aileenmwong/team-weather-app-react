@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import WeatherForm from './components/WeatherForm';
 import Weather from './components/Weather';
 import axios from 'axios';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -26,18 +25,18 @@ componentWillMount(){
 }
 
 componentDidMount(){
-  axios(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.inputZipValue},us&units=imperial&appid=0fc87027b19a680898624a73494f93bc`)
-  .then((res) => {
-    console.log(res.data)
-      this.setState({
-        apiData: res.data.data,
-        cityName: res.data.cityName,
-        currentTemp: res.data.currentTemp,
-        description: res.data.description,
-        minTemp: res.data.minTemp,
-        maxTemp: res.data.maxTemp,
-      })
-    })
+  // axios(`https://api.openweathermap.org/data/2.5/weather?q=${this.state.inputZipValue},us&units=imperial&appid=0fc87027b19a680898624a73494f93bc`)
+  // .then((res) => {
+  //   console.log(res.data)
+  //     this.setState({
+  //       apiData: res.data.data,
+  //       cityName: res.data.name,
+  //       currentTemp: res.data.main.temp,
+  //       description: res.data.weather[0].description,
+  //       minTemp: res.data.main.temp_min,
+  //       maxTemp: res.data.main.temp_max,
+  //     })
+  //   })
   }
 
  handleInputZipChange(event) {
@@ -54,11 +53,11 @@ handleWeatherSubmit(event){
   .then((res) => {
     this.setState({
         apiData: res.data.data,
-        cityName: res.data.cityName,
-        currentTemp: res.data.currentTemp,
-        description: res.data.description,
-        minTemp: res.data.minTemp,
-        maxTemp: res.data.maxTemp,
+        cityName: res.data.name,
+        currentTemp: res.data.main.temp,
+        description: res.data.weather[0].description,
+        minTemp: res.data.main.temp_min,
+        maxTemp: res.data.main.temp_max,
   })
   console.log(res.data)
   })
