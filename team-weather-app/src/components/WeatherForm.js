@@ -11,10 +11,10 @@ class WeatherForm extends Component {
         >
         <input
           type="text"
-          value={this.props.inputZipValue}
+          value={this.props.zipCode}
           name="zipCode"
           placeholder="Enter Zip Code"
-          onChange={this.props.handleInputZipValue}
+          onChange={this.props.handleInputZipChange}
         /><br/>
 
         <button id="submit">Get the Weather</button>

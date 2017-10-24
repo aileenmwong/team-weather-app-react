@@ -15,6 +15,7 @@ class App extends Component {
       description: '',
       minTemp: '',
       maxTemp: '',
+      zipCode: '',
 
     }
     this.handleInputZipChange = this.handleInputZipChange.bind(this);
@@ -70,7 +71,8 @@ handleWeatherSubmit(event){
       <WeatherForm
       handleWeatherSubmit={this.handleWeatherSubmit}
       handleInputZipChange={this.handleInputZipChange}
-      handleInputZipValue={this.handleInputZipValue}
+      handleInputZipValue={this.state.inputZipValue}
+      zipCode={this.state.zipCode}
       />
       <Weather
       data={this.state.apiData}
